@@ -27,7 +27,7 @@ export const MainContent = () => {
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error: {error.message}</p>;
 	return (
-		<div className="pt-20 md:28 text-center xl:mx-24 lg:mx-16 md:mx-12 sm:mx-8">
+		<div className="pt-20 md:pt-28 text-center xl:mx-24 lg:mx-16 md:mx-12 sm:mx-8">
 			<h1 className="text-4xl">Anilist Anime</h1>
 			<div className="flex-column flex-wrap justify-content-start gap-4 column-gap-7">
 				{data.Page.media.map(anime => (
