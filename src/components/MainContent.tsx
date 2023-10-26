@@ -27,15 +27,15 @@ export const MainContent = () => {
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error: {error.message}</p>;
 	return (
-		<>
-			<h1>Anilist Anime</h1>
+		<div className="pt-20 md:28 text-center xl:mx-24 lg:mx-16 md:mx-12 sm:mx-8">
+			<h1 className="text-4xl">Anilist Anime</h1>
 			<div className="flex-column flex-wrap justify-content-start gap-4 column-gap-7">
 				{data.Page.media.map(anime => (
-					<Fieldset className="m-1 xl:m-5 lg:m-4 md:m-3 sm:m-2" key={anime.id} legend={anime.title.romaji}>
-						<div className="flex xl:gap-6 lg:gap-4 md:gap-2 gap-1">
-							<img className="w-auto h-10rem border-round-xl" src={anime.coverImage.medium} alt="Anime's cover" />
-							<Card className="bg-primary-900">
-								<ScrollPanel className="max-h-12rem">
+					<Fieldset className="m-1 xl:m-6 lg:m-4 md:m-3 sm:m-2" key={anime.id} legend={anime.title.romaji}>
+						<div className="flex xl:gap-6 lg:gap-4 md:gap-2 gap-1 justify-center">
+							<img className="w-auto h-60 border-round-xl " src={anime.coverImage.medium} alt="Anime's cover" />
+							<Card className="bg-primary-800 hidden sm:block ">
+								<ScrollPanel className="max-h-[12rem] pr-2 z-45">
 									<div dangerouslySetInnerHTML={{ __html: anime.description }} />
 								</ScrollPanel>
 							</Card>
@@ -43,5 +43,5 @@ export const MainContent = () => {
 					</Fieldset>
 				))}
 			</div>
-		</>);
+		</div>);
 };
