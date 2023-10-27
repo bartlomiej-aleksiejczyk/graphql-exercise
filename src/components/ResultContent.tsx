@@ -29,8 +29,8 @@ query GetAnime($searchValue: String, $popularityGreater: Int) {
 `;
 
 export const ResultContent = () => {
-	const searchValue = useReactiveVar(searchValueVar);
-	const popularityGreater = useReactiveVar(popularityGreaterVar)
+	const searchValue = useReactiveVar<string>(searchValueVar);
+	const popularityGreater = useReactiveVar<number>(popularityGreaterVar)
 	const { loading, error, data } = useQuery(GET_ANIME, {
 		variables: { searchValue: searchValue, popularityGreater: popularityGreater }
 	});

@@ -8,10 +8,8 @@ import { TopSearchBar } from "./TopSearchBar";
 export const StyleConfiguration = () => {
 	return (
 		<PrimeReactProvider className="p-0 m-0">
-			<>
 				<TopSearchBar />
 				<ResultContent />
-			</>
 		</PrimeReactProvider>
 	);
 };
