@@ -17,7 +17,8 @@ query GetAnime($searchValue: String, $popularityGreater: Int) {
         coverImage {
           medium 
         }
-        description(asHtml: true)
+        description
+        parsedDescription @client
         id
         season
         title {
@@ -47,7 +48,8 @@ export const ResultContent = () => {
 							<img className="w-auto h-60 border-round-xl " src={anime.coverImage.medium} alt="Anime's cover" />
 							<Card className="bg-primary-800 hidden sm:block ">
 								<ScrollPanel className="max-h-[12rem] pr-2 z-45">
-									<div dangerouslySetInnerHTML={{ __html: anime.description }} />
+									{anime.parsedDescription?.map(paragraph => (
+									<span>{paragraph}</span>))}
 								</ScrollPanel>
 							</Card>
 						</div>

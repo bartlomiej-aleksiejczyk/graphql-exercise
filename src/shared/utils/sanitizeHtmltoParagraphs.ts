@@ -1,6 +1,5 @@
-function sanitizeHTMLtoParagraphs(html: string): string[] {
-	const parser = new DOMParser();
-	const doc = parser.parseFromString(html, 'text/html');
-
-	return Array.from(doc.querySelectorAll('p')).map(p => p.textContent || '');
+export function parseDescriptionToArray(input: string): string[] {
+	let lines = input.split("<br>");
+	lines = lines.filter(line => line.trim() !== "");
+	return lines;
 }
