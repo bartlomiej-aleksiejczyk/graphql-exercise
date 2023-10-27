@@ -3,30 +3,36 @@ import gql from "graphql-tag";
 import { useQuery, useReactiveVar } from "@apollo/client";
 import { Fieldset } from "primereact/fieldset";
 import { ScrollPanel } from "primereact/scrollpanel";
-import { searchValueVar } from "../shared/apollo/searchValues";
+import { popularityGreaterVar, searchValueVar } from "../shared/apollo/searchValues";
 
 const GET_ANIME = gql`
-  query GetAnime($searchValue: String!) {
+query GetAnime($searchValue: String, $popularityGreater: Int) {
     Page(page: 1, perPage: 10) {
-      media(type: ANIME, search: $searchValue, sort: [START_DATE] popularity_greater: 100000) {
-              coverImage {
-              medium
-              }
-              description(asHtml: true)
-              id
-              season
-              title {
-              romaji
-              }
-	  }
-	}
+      media(
+        type: ANIME, 
+        search: $searchValue
+        sort: [START_DATE], 
+        popularity_greater: $popularityGreater
+      ) {
+        coverImage {
+          medium 
+        }
+        description(asHtml: true)
+        id
+        season
+        title {
+          romaji
+        }
+      }
+    }
   }
 `;
 
 export const ResultContent = () => {
 	const searchValue = useReactiveVar(searchValueVar);
+	const popularityGreater = useReactiveVar(popularityGreaterVar)
 	const { loading, error, data } = useQuery(GET_ANIME, {
-		variables: { searchValue: searchValue }
+		variables: { searchValue: searchValue, popularityGreater: popularityGreater }
 	});
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error: {error.message}</p>;
