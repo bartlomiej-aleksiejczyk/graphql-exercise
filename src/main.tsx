@@ -8,6 +8,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<ApolloProvider client={apolloClient}>
 			<App />
-		</ApolloProvider>,
+		</ApolloProvider>
 	</React.StrictMode>
 );
