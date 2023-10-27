@@ -13,7 +13,7 @@ export const TopSearchBar = () => {
 		popularityGreater ? popularityGreaterVar(popularityGreater) : popularityGreaterVar(undefined);
 	};
 	return (
-		<div className="flex p-3 gap-3 w-full fixed bg-blue-800 z-50 justify-center">
+		<div className="flex p-3 gap-3 w-full fixed bg-blue-800 z-50 justify-center flex-wrap">
 			<InputNumber value={popularityGreater} onValueChange={(e) => setPopularityGreater(e.value)} placeholder="Popularity Greater Than"/>
 			<InputText id="search-input place" value={searchWord} onChange={(e) => (setSearchWord(e.target.value))} placeholder="Search" />
 			<Button unstyled={true} icon="pi pi-search" className="p-button-rounded p-button-success" onClick={handleSearch}  />
